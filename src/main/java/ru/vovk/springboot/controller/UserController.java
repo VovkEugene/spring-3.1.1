@@ -47,18 +47,13 @@ public class UserController {
     public String updateUser(@RequestParam("id") Long id,
                              @RequestParam("username") String username,
                              @RequestParam("email") String email) {
-        User user = service.getUserById(id)
-                .orElseThrow();
-        user.setUsername(username);
-        user.setEmail(email);
-        service.updateUser(id, user);
+        service.updateUser(id, username, email);
         return "redirect:/";
     }
 
     @GetMapping("/edit-form")
     public String editUserForm(@RequestParam("id") Long id, Model model) {
-        User user = service.getUserById(id)
-                .orElseThrow();
+        User user = service.getUserById(id).orElseThrow();
         model.addAttribute("user", user);
         return "edit-form";
     }

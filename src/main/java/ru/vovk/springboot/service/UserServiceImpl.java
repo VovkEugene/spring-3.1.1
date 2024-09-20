@@ -51,6 +51,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updateUser(Long id, String username, String email) {
+        User maybeUser = getUserById(id)
+                .orElseThrow();
+        maybeUser.setUsername(username);
+        maybeUser.setEmail(email);
+        maybeUser.setRole(maybeUser.getRole());
+        maybeUser.setCreateDate(maybeUser.getCreateDate());
+        repository.save(maybeUser);
+    }
+
+    @Override
     public void deleteUser(Long id) {
         repository.deleteById(id);
     }
