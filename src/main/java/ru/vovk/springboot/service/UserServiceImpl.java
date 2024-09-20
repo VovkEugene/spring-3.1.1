@@ -29,17 +29,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(Long id, User user) {
-        User maybeUser = getUserById(id)
-                .orElseThrow();
-        maybeUser.setUsername(user.getUsername());
-        maybeUser.setEmail(user.getEmail());
-        maybeUser.setRole(user.getRole());
-        maybeUser.setCreateDate(user.getCreateDate());
-        repository.save(maybeUser);
-    }
-
-    @Override
     public void updateUser(Long id, String username, String email) {
         User maybeUser = getUserById(id)
                 .orElseThrow();

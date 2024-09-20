@@ -60,7 +60,7 @@ public class UserController {
 
     @PostMapping("/edit-form")
     public String editUser(@RequestParam("id") Long id, User user) {
-        service.updateUser(id, user);
+        service.updateUser(id, user.getUsername(), user.getEmail());
         return "redirect:/";
     }
 
